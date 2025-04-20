@@ -1,3 +1,8 @@
+--[[
+	ui-engine-v2
+	version 1.3a
+	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
+--]]
 local ui_options = {
 	main_color = Color3.fromRGB(41, 74, 122),
 	min_size = Vector2.new(400, 300),
@@ -2067,9 +2072,9 @@ do -- Example UI
 		local player = Players.LocalPlayer or Players.PlayerAdded:Wait()
 		local playerGui = player:WaitForChild("PlayerGui")
 
-		local function startHamAndCheeseToastie()
+		local function reloadNotif(title, message)
 			local screenGui = Instance.new("ScreenGui")
-			screenGui.Name = "HotToastNotifyZNC"
+			screenGui.Name = "ReloadWYN"
 			screenGui.ResetOnSpawn = false
 			screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			screenGui.DisplayOrder = 100
@@ -2105,7 +2110,7 @@ do -- Example UI
 			local accent = Instance.new("Frame")
 			accent.Size = UDim2.new(0, 4, 1, 0)
 			accent.Position = UDim2.new(0, 0, 0, 0)
-			accent.BackgroundColor3 = Color3.fromRGB(72, 199, 142) -- colour of the bar next to the icon
+			accent.BackgroundColor3 = Color3.fromRGB(84, 84, 84) -- colour of the bar next to the icon
 			accent.BorderSizePixel = 0
 			accent.ZIndex = 2
 			accent.Parent = frame
@@ -2131,7 +2136,7 @@ do -- Example UI
 			iconImage.Size = UDim2.new(1, 0, 1, 0)
 			iconImage.BackgroundTransparency = 1
 			iconImage.Image = "rbxassetid://6023426926" -- ts is the icon for notify (success icon atm)
-			iconImage.ImageColor3 = Color3.fromRGB(72, 199, 142)
+			iconImage.ImageColor3 = Color3.fromRGB(84, 84, 84)
 			iconImage.Parent = iconContainer
 
 			local titleLabel = Instance.new("TextLabel")
@@ -2141,7 +2146,7 @@ do -- Example UI
 			titleLabel.Font = Enum.Font.SourceSansBold
 			titleLabel.TextSize = 16
 			titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-			titleLabel.Text = "Wyn.GG"
+			titleLabel.Text = title
 			titleLabel.TextXAlignment = Enum.TextXAlignment.Left
 			titleLabel.TextTruncate = Enum.TextTruncate.AtEnd
 			titleLabel.Parent = contentContainer
@@ -2153,7 +2158,7 @@ do -- Example UI
 			messageLabel.Font = Enum.Font.SourceSans
 			messageLabel.TextSize = 14
 			messageLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-			messageLabel.Text = "Reloaded Ui."
+			messageLabel.Text = message
 			messageLabel.TextXAlignment = Enum.TextXAlignment.Left
 			messageLabel.TextYAlignment = Enum.TextYAlignment.Top
 			messageLabel.TextWrapped = true
@@ -2170,7 +2175,7 @@ do -- Example UI
 
 			local progressBar = Instance.new("Frame")
 			progressBar.Size = UDim2.new(1, 0, 1, 0)
-			progressBar.BackgroundColor3 = Color3.fromRGB(72, 199, 142) -- progressbar colour
+			progressBar.BackgroundColor3 = Color3.fromRGB(84, 84, 84) -- progressbar colour
 			progressBar.BorderSizePixel = 0
 			progressBar.ZIndex = 6
 			progressBar.Parent = progressBarContainer
@@ -2206,8 +2211,8 @@ do -- Example UI
 			player.CharacterAdded:Wait()
 		end
 
-		startHamAndCheeseToastie()
-
+		reloadNotif("Wyn.GG", "Reloading Wyn!")
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/ZynccDev/wyn.gg/refs/heads/main/ui"))()
 	end)
 	Editor:Show()
 	library:FormatWindows()
