@@ -2166,8 +2166,8 @@ function library:AddWindow(title, options)
 end
 
 do
-	local Window = library:AddWindow("Wyn.GG DEV", {
-		main_color = Color3.fromRGB(41, 74, 122),
+	local Window = library:AddWindow("Steak v2", {
+		main_color = Color3.fromRGB(20,20,20),
 		min_size = Vector2.new(500, 300),
 		toggle_key = Enum.KeyCode.Delete,
 		can_resize = false,
